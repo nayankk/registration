@@ -2,6 +2,7 @@ import os
 from flask import Flask, request
 from twilio.util import TwilioCapability
 import twilio.twiml
+from twilio.rest import TwilioRestClient
 
 # Account Sid and Auth Token can be found in your account dashboard
 ACCOUNT_SID = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -69,6 +70,10 @@ def welcome():
 @app.route('/sms', methods=['GET', 'POST'])
 def sendsms():
   phnumber = request.values.get('phnumber');
+  account_sid = os.environ.get("ACCOUNT_SID", ACCOUNT_SID)
+  auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
+  client = TwilioRestClient(account_sid, auth_token)
+  message = client.messages.create(to=phnumber, from="+16503895669", body="Hello nayan")
   return phnumber
 
 if __name__ == "__main__":
