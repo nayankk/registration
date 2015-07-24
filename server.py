@@ -5,14 +5,14 @@ import twilio.twiml
 from twilio.rest import TwilioRestClient
 
 # Account Sid and Auth Token can be found in your account dashboard
-ACCOUNT_SID = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-AUTH_TOKEN = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+ACCOUNT_SID = 'AC22c53019e9ac386d35372df432ee3c67'
+AUTH_TOKEN = '173ecb96dbfd43581ce87f1d3e948a86'
 
 # TwiML app outgoing connections will use
-APP_SID = 'APZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+APP_SID = 'AP82b4d6a9fa1b67d2d9be7df4a52908ec'
 
-CALLER_ID = '+12345678901'
-CLIENT = 'jenny'
+CALLER_ID = '+16503895669'
+CLIENT = 'nayan'
 
 app = Flask(__name__)
 
@@ -73,7 +73,7 @@ def sendsms():
   account_sid = os.environ.get("ACCOUNT_SID", ACCOUNT_SID)
   auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
   client = TwilioRestClient(account_sid, auth_token)
-  message = client.messages.create(to=phnumber, from="+16503895669", body="Hello nayan")
+  message = client.messages.create(to=phnumber, from_='+16503895669', body='Hello nayan')
   return phnumber
 
 if __name__ == "__main__":
