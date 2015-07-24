@@ -66,6 +66,10 @@ def welcome():
   resp.say("Welcome to Twilio")
   return str(resp)
 
+@app.route('/sms', methods=['GET', 'POST'])
+def sendsms():
+  return str("nayan")
+
 if __name__ == "__main__":
   port = int(os.environ.get("PORT", 5000))
   app.run(host='0.0.0.0', port=port, debug=True)
