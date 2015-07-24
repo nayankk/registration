@@ -68,7 +68,8 @@ def welcome():
 
 @app.route('/sms', methods=['GET', 'POST'])
 def sendsms():
-  return str("nayan")
+  phnumber = request.values.get('phnumber');
+  return phnumber
 
 if __name__ == "__main__":
   port = int(os.environ.get("PORT", 5000))
