@@ -70,10 +70,11 @@ def welcome():
 @app.route('/sms', methods=['GET', 'POST'])
 def sendsms():
   phnumber = request.values.get('phnumber');
+  random = request.values.get('random');
   account_sid = os.environ.get("ACCOUNT_SID", ACCOUNT_SID)
   auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
   client = TwilioRestClient(account_sid, auth_token)
-  message = client.messages.create(to=phnumber, from_='+16503895669', body='Hello nayan')
+  message = client.messages.create(to=phnumber, from_='+16503895669', body='Your verification code is : ' + random)
   return phnumber
 
 if __name__ == "__main__":
